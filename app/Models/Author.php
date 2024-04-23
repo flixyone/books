@@ -2,9 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Book;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Author extends Model
 {
@@ -13,4 +14,12 @@ class Author extends Model
 		'name',
 		'biography'
 	];
+
+
+	public function books()
+	{
+		return $this->hasMany(Book::class, 'author_id', 'id');//aqui hace referencia this a la clase donde esta,
+		//entonces un autor tiene muchos libros
+	}
+	/*Author::with('books)->get();*/
 }
