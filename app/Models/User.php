@@ -32,7 +32,7 @@ class User extends Authenticatable
         'remember_token',
     ];
 
-	protected $cast =[
+	protected $casts =[
 		'created_at' => 'datetime:Y-m-d',
 		'updated_at' => 'datetime:Y-m-d',
 		// 'is_enable' => 'boolean' //0-1:true,false
