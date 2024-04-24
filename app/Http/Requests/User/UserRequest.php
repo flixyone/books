@@ -31,6 +31,9 @@ class UserRequest extends FormRequest
 			array_push($rules['email'],'unique:users,email,'.$this->user->id);
 			array_push($rules['password'],'nullable');
 		}
+		//if ($this->path() != 'api/register') {
+			// 	$rules['role_name'] = ['required', 'string'];
+			// }
 		return  $rules;
     }
 	public function messages(){
