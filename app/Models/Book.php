@@ -16,10 +16,11 @@ class Book extends Model
 	protected $fillable = [
 		'category_id',
 		'author_id',
-		'title',
+		'name',
 		'stock',
 		'description',
 	];
+
 
 	/*
 		Book::with('category','author')->get();
