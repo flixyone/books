@@ -6,6 +6,7 @@ namespace App\Models;
 use App\Models\Lend;
 use Illuminate\Support\Str;
 use Laravel\Sanctum\HasApiTokens;
+use Spatie\Permission\Traits\HasRoles;
 use Psy\CodeCleaner\ReturnTypePass;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -13,9 +14,10 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 
+
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable,SoftDeletes;
+    use HasRoles, HasApiTokens, HasFactory, Notifiable,SoftDeletes;
 
 
     protected $fillable = [
@@ -69,4 +71,5 @@ class User extends Authenticatable
 	{
 		return $this->hasMany(Lend::class, 'owner_user_id', 'id');
 	}
+
 }

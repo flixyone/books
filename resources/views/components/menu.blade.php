@@ -42,10 +42,18 @@
                         <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
 
                             {{-- Logout --}}
+
                             <a class="dropdown-item" href="{{ route('logout') }}"
                                 onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                Cerrar sesión
+                                Cerrar Sesion
                             </a>
+
+							@role('admin')
+							{{-- User --}}
+							<a class="dropdown-item" href="{{ route('users.index') }}">
+                                Usuarios
+                            </a>
+							@endrole
 
 
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
