@@ -1,4 +1,3 @@
-
 <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
     <div class="container">
         <a class="navbar-brand" href="{{ url('/') }}">{{ env('APP_NAME') }}</a>
@@ -41,20 +40,31 @@
 
                         <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
 
-                            {{-- Logout --}}
+                            @role('admin')
+                                {{-- User --}}
+                                <a class="dropdown-item" href="{{ route('users.index') }}">
+                                    Usuarios
+                                </a>
+                            @endrole
+                            @role('admin|librarian')
+                                {{-- Book --}}
+                                <a class="dropdown-item" href="{{ route('books.index') }}">
+                                    Libros
+                                </a>
+                            @endrole
+                            @can('categories.index')
+                                {{-- Category --}}
+                                <a class="dropdown-item" href="{{ route('categories.index') }}">
+                                    Categorias
+                                </a>
+                            @endcan
 
+
+                            {{-- Logout --}}
                             <a class="dropdown-item" href="{{ route('logout') }}"
                                 onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                Cerrar Sesion
+                                Cerrar sesión
                             </a>
-
-							@role('admin')
-							{{-- User --}}
-							<a class="dropdown-item" href="{{ route('users.index') }}">
-                                Usuarios
-                            </a>
-							@endrole
-
 
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                 @csrf
