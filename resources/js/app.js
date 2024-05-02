@@ -8,7 +8,7 @@ import TheBookList from './components/Books/TheBookList.vue'
 const app = createApp({
 	components: {
 		TheBookList
-	}
+	}	
 })
 
 app.component('v-select', vSelect)
